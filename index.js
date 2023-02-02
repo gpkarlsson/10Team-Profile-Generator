@@ -21,30 +21,72 @@ const fs = require('fs');
 const directoryDist = require(__dirname, 'dist');
 const distPath = path.join(directoryDist, 'team.html');
 
+const render = require('./src/htmlTemplateLiteral.js')
 
 const teamMembers = [];
+const idArray = [];
 
-function genManager() {
-  const questions = [
-    {
-      type: 'input',
-      name: 'managerName',
-      message: "What is the team manager's name?"
-   },
-   {
-    type: 'input',
-    name: 'managerId',
-    message: "What is the manager's ID?"
-   },
-   {
-    type: 'input',
-    name: 'managerEmail',
-    message: "What is the team manager's email?"
-   },
-   {
-    type: 'input',
-    name: 'managerOfficeNum',
-    message: "What is the manager's office number?"
-   }
-];
+function menuApp() {
+  function genManager() {
+    inquirer.prompt([
+      {
+        type: 'input',
+        name: 'managerName',
+        message: "What is the team manager's name?"
+      },
+      {
+        type: 'input',
+        name: 'managerId',
+        message: "What is the manager's ID?"
+      },
+      {
+        type: 'input',
+        name: 'managerEmail',
+        message: "What is the team manager's email?"
+      },
+      {
+        type: 'input',
+        name: 'managerOfficeNum',
+        message: "What is the manager's office number?"
+      }
+    ])
+      .then((answers) => {
+        const manager = new Manager(
+          answers.managerName,
+          answers.managerId,
+          answers.managerEmail,
+          answers.managerOfficeNum
+        );
+        teamMemebers.push(manager);
+        idArray.push(answers.managerId);
+        createTeam();
+      });
+  }
+
+  function createTeam() {
+    inquirer.prompt([
+      {
+        type: 'list',
+        name: 'teamMemberChoice',
+        message: 'Which type of team member would you like to add?',
+        choices: [
+          'Engineer',
+          'Intern',
+          "I don't want to add any more team memebers",
+        ],
+      },
+    ])
+    .then((userChoice) => {
+      switch (userChoice.memberChoice) {
+        case 'Engineer':
+          addEngineer();
+          break;
+        case 'Intern':
+          addIntern();
+          break;
+        default:
+          buildTeam()
+      }
+    });
+  }
 }
