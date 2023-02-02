@@ -24,8 +24,27 @@ const distPath = path.join(directoryDist, 'team.html');
 
 const teamMembers = [];
 
-
-const questions = [{
-
-  
-}]
+function genManager() {
+  const questions = [
+    {
+      type: 'input',
+      name: 'managerName',
+      message: "What is the team manager's name?"
+   },
+   {
+    type: 'input',
+    name: 'managerId',
+    message: "What is the manager's ID?"
+   },
+   {
+    type: 'input',
+    name: 'managerEmail',
+    message: "What is the team manager's email?"
+   },
+   {
+    type: 'input',
+    name: 'managerOfficeNum',
+    message: "What is the manager's office number?"
+   }
+];
+}
