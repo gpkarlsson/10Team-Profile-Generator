@@ -1,7 +1,6 @@
 {
   "dependencies": {
-    "inquirer": "^8.2.4",
-    "jest": "^29.4.1"
+    "inquirer": "^8.2.4"
   },
   "name": "10team-profile-generator",
   "version": "1.0.0",
@@ -15,5 +14,16 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gpkarlsson/10Team-Profile-Generator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gpkarlsson/10Team-Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/gpkarlsson/10Team-Profile-Generator#readme",
+  "devDependencies": {
+    "jest": "^29.4.1"
+  }
 }
