@@ -167,7 +167,7 @@ function menuApp() {
       fs.mkdirSync(distPath, render(teamMembers))
     }
   }
-  createManager();
+  genManager();
 }
 
 menuApp();
