@@ -1,0 +1,8 @@
+.team-heading {
+    background-image: linear-gradient(skyblue, pink)
+}
+
+div.card.employee {
+display: flex;
+justify-content: space-around;
+}

@@ -1,16 +1,15 @@
 const generateTeam = team => {
-  const genManager = manager => {
+  const generateManager = manager => {
     return `  
     <div class="card employee" style="width: 18rem;">
     <div class="card-body">
       <h2 class="card-title">${manager.returnName()}</h2>
       <h3 class="card-subtitle mb-2 text-muted">${manager.returnRole()}</h3>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     </div>
     <div class="card" style="width: 18rem;">
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">${manager.returnId()}/li>
-    <li class="list-group-item">Email:<a href="mailto:${manager.returnEmail()}">${manager.returnEmail()}</li>
+    <li class="list-group-item">${manager.returnId()}</li>
+    <li class="list-group-item">Email:<a href="mailto:${manager.returnEmail()}">${manager.returnEmail()}</a></li>
     <li class="list-group-item">Office Number:${manager.returnManagerOfficeNum()}</li>
   </ul>
 </div>
@@ -18,19 +17,18 @@ const generateTeam = team => {
     `;
   }
 
-  const genEngineer = engineer => {
+  const generateEngineer = engineer => {
     return `
     <div class="card employee" style="width: 18rem;">
     <div class="card-body">
       <h2 class="card-title">${engineer.returnName()}</h2>
       <h3 class="card-subtitle mb-2 text-muted">${engineer.returnRole()}</h3>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     </div>
     <div class="card" style="width: 18rem;">
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">${engineer.returnId()}/li>
-    <li class="list-group-item">Email:<a href="mailto:${engineer.returnEmail()}">${engineer.returnEmail()}</li>
-    <li class="list-group-item">GitHub:<a href="https//:github.com/${engineer.returnGithub()}" target="_blank">${engineer.returnGithub()}</li>
+    <li class="list-group-item">${engineer.returnId()}</li>
+    <li class="list-group-item">Email:<a href="mailto:${engineer.returnEmail()}">${engineer.returnEmail()}</a></li>
+    <li class="list-group-item">GitHub:<a href="https//:github.com/${engineer.returnGitHub()}" target="_blank">${engineer.returnGitHub()}</li>
   </ul>
 </div>
   </div>
@@ -43,13 +41,12 @@ const generateTeam = team => {
     <div class="card-body">
       <h2 class="card-title">${intern.returnName()}</h2>
       <h3 class="card-subtitle mb-2 text-muted">${intern.returnRole()}</h3>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     </div>
     <div class="card" style="width: 18rem;">
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">${intern.returnId()}/li>
+    <li class="list-group-item">${intern.returnId()}</li>
     <li class="list-group-item">Email:<a href="mailto:${intern.returnEmail()}">${intern.returnEmail()}</li>
-    <li class="list-group-item">GitHub:<a href="https//:github.com/${intern.returnSchool()}" target="_blank">${intern.returnGithub()}</li>
+    <li class="list-group-item">School:${intern.returnSchool()}</li>
   </ul>
 </div>
   </div>
@@ -60,12 +57,12 @@ const generateTeam = team => {
 
   html.push(team
     .filter(employee => employee.returnRole() === 'Manager')
-    .map(manager => genManager(manager))
+    .map(manager => generateManager(manager))
   );
 
   html.push(team
     .filter(employee => employee.returnRole() === 'Engineer')
-    .map(engineer => genEngineer(engineer))
+    .map(engineer => generateEngineer(engineer))
     .join('')
   );
 

@@ -10,7 +10,9 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "test"
+    "test": "jest",
+    "start": "node index.js",
+    "reset": "node reset.js"
   },
   "keywords": [],
   "author": "",

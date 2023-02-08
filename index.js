@@ -18,8 +18,8 @@ const path = require('path');
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-const directoryDist = require(__dirname, 'dist');
-const distPath = path.join('directoryDist', 'team.html', '');
+const DIST_DIR = require(__dirname, 'dist');
+const distPath = path.join('DIST_DIR', 'team.html');
 
 const render = require('./src/htmlTemplateLiteral.js');
 
@@ -67,7 +67,7 @@ function menuApp() {
     inquirer.prompt([
       {
         type: 'list',
-        name: 'teamMemberChoice',
+        name: 'memberChoice',
         message: 'Which type of team member would you like to add?',
         choices: [
           'Engineer',
@@ -85,7 +85,7 @@ function menuApp() {
             addIntern();
             break;
           default:
-            generateTeam()
+            generateTeam();
         }
       });
   }
@@ -121,10 +121,11 @@ function menuApp() {
           answers.engineerEmail,
           answers.engineerGithub
         );
+        teamMembers.push(engineer);
+        idArray.push(answers.engineerId);
+        createTeam();
       })
-    teamMembers.push(engineer);
-    idArray.push(answers.engineerId);
-    createTeam(); //createTeam? not makeTeam?
+
   }
   function addIntern() {
     inquirer
@@ -158,14 +159,15 @@ function menuApp() {
           answers.internSchool
         );
         teamMembers.push(intern);
-        idArray.push(internId);
+        idArray.push(answers.internId);
         createTeam();
       });
   }
   function generateTeam() {
-    if (!fs.existsSync(directoryDist)) {
-      fs.mkdirSync(distPath, render(teamMembers))
+    if (!fs.existsSync('DIST_DIR')) {
+      fs.mkdirSync('DIST_DIR')
     }
+    fs.writeFileSync(distPath, render(teamMembers), 'utf-8');
   }
   genManager();
 }
