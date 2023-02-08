@@ -19,9 +19,9 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 
 const directoryDist = require(__dirname, 'dist');
-const distPath = path.join(directoryDist, 'team.html');
+const distPath = path.join('directoryDist', 'team.html', '');
 
-const render = require('./src/htmlTemplateLiteral.js')
+const render = require('./src/htmlTemplateLiteral.js');
 
 const teamMembers = [];
 const idArray = [];
@@ -57,7 +57,7 @@ function menuApp() {
           answers.managerEmail,
           answers.managerOfficeNum
         );
-        teamMemebers.push(manager);
+        teamMembers.push(manager);
         idArray.push(answers.managerId);
         createTeam();
       });
@@ -72,22 +72,22 @@ function menuApp() {
         choices: [
           'Engineer',
           'Intern',
-          "I don't want to add any more team memebers",
+          "I don't want to add any more team members",
         ],
       },
     ])
-    .then((userChoice) => {
-      switch (userChoice.memberChoice) {
-        case 'Engineer':
-          addEngineer();
-          break;
-        case 'Intern':
-          addIntern();
-          break;
-        default:
-          makeTeam()
-      }
-    });
+      .then((userChoice) => {
+        switch (userChoice.memberChoice) {
+          case 'Engineer':
+            addEngineer();
+            break;
+          case 'Intern':
+            addIntern();
+            break;
+          default:
+            generateTeam()
+        }
+      });
   }
 
   function addEngineer() {
@@ -115,54 +115,54 @@ function menuApp() {
         }
       ])
       .then((answers) => {
-        const engineer= new Engineer(
+        const engineer = new Engineer(
           answers.engineerName,
           answers.engneerId,
           answers.engineerEmail,
           answers.engineerGithub
         );
       })
-      teamMembers.push(engineer);
-      idArray.push(answers.engineerId);
-      createTeam(); //createTeam? not makeTeam?
+    teamMembers.push(engineer);
+    idArray.push(answers.engineerId);
+    createTeam(); //createTeam? not makeTeam?
   }
   function addIntern() {
     inquirer
-    .prompt([
-      {
-        type: 'input',
-        name: 'internName',
-        message: "What is the intern's name?"
-      },
-      {
-        type: 'input',
-        name: 'internId',
-        message: "What is the intern's id?"
-      },
-      {
-        type: 'input',
-        name: 'internEmail',
-        message: "What is the intern's email?"
-      },
-      {
-        type: 'input',
-        name: 'internSchool',
-        message: "What is the intern's school?"
-      }
-    ])
-    .then((answers) => {
-      const intern = new Intern(
-        answers.internName,
-        answers.internId,
-        answers.internEmail,
-        answers.internSchool
-      );
-      teamMembers.push(intern);
-      idArray.push(internId);
-      createTeam();
-    });
+      .prompt([
+        {
+          type: 'input',
+          name: 'internName',
+          message: "What is the intern's name?"
+        },
+        {
+          type: 'input',
+          name: 'internId',
+          message: "What is the intern's id?"
+        },
+        {
+          type: 'input',
+          name: 'internEmail',
+          message: "What is the intern's email?"
+        },
+        {
+          type: 'input',
+          name: 'internSchool',
+          message: "What is the intern's school?"
+        }
+      ])
+      .then((answers) => {
+        const intern = new Intern(
+          answers.internName,
+          answers.internId,
+          answers.internEmail,
+          answers.internSchool
+        );
+        teamMembers.push(intern);
+        idArray.push(internId);
+        createTeam();
+      });
   }
-  function makeTeam() {
+  function generateTeam() {
     if (!fs.existsSync(directoryDist)) {
       fs.mkdirSync(distPath, render(teamMembers))
     }
