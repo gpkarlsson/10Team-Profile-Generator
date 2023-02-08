@@ -8,9 +8,9 @@ const generateTeam = team => {
     </div>
     <div class="card" style="width: 18rem;">
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">${manager.returnId()}</li>
-    <li class="list-group-item">Email:<a href="mailto:${manager.returnEmail()}">${manager.returnEmail()}</a></li>
-    <li class="list-group-item">Office Number:${manager.returnManagerOfficeNum()}</li>
+    <li class="list-group-item"> ${manager.returnId()}</li>
+    <li class="list-group-item">Email: <a href="mailto:${manager.returnEmail()}">${manager.returnEmail()}</a></li>
+    <li class="list-group-item">Office Number: ${manager.returnManagerOfficeNum()}</li>
   </ul>
 </div>
   </div>
@@ -27,15 +27,15 @@ const generateTeam = team => {
     <div class="card" style="width: 18rem;">
   <ul class="list-group list-group-flush">
     <li class="list-group-item">${engineer.returnId()}</li>
-    <li class="list-group-item">Email:<a href="mailto:${engineer.returnEmail()}">${engineer.returnEmail()}</a></li>
-    <li class="list-group-item">GitHub:<a href="https//:github.com/${engineer.returnGitHub()}" target="_blank">${engineer.returnGitHub()}</li>
+    <li class="list-group-item">Email: <a href="mailto:${engineer.returnEmail()}">${engineer.returnEmail()}</a></li>
+    <li class="list-group-item">GitHub: <a href="https//:github.com/${engineer.returnGitHub()}">${engineer.returnGitHub()}</a></li>
   </ul>
 </div>
   </div>
     `;
   }
 
-  const generateIntern = intern => {``
+  const generateIntern = intern => {
     return `
     <div class="card employee" style="width: 18rem;">
     <div class="card-body">
@@ -45,8 +45,8 @@ const generateTeam = team => {
     <div class="card" style="width: 18rem;">
   <ul class="list-group list-group-flush">
     <li class="list-group-item">${intern.returnId()}</li>
-    <li class="list-group-item">Email:<a href="mailto:${intern.returnEmail()}">${intern.returnEmail()}</li>
-    <li class="list-group-item">School:${intern.returnSchool()}</li>
+    <li class="list-group-item">Email: <a href="mailto:${intern.returnEmail()}">${intern.returnEmail()}</a></li>
+    <li class="list-group-item">School: ${intern.returnSchool()}</li>
   </ul>
 </div>
   </div>
