@@ -1,16 +1,4 @@
-// .
-// ├── __tests__/             //jest tests
-// │   ├── Employee.test.js
-// │   ├── Engineer.test.js
-// │   ├── Intern.test.js
-// │   └── Manager.test.js
-// ├── dist/                  // rendered output (HTML) and CSS style sheet      
-// ├── lib/                   // classes
-// ├── src/                   // template helper code 
-// ├── .gitignore             // indicates which folders and files Git should ignore
-// ├── index.js               // runs the application
-// └── package.json           
-
+//Required packages
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
@@ -21,12 +9,15 @@ const fs = require('fs');
 const DIST_DIR = require(__dirname, 'dist');
 const distPath = path.join('DIST_DIR', 'team.html');
 
+//Require html generation js file
 const render = require('./src/htmlTemplateLiteral.js');
 
+//Empty Arrays that data will be pushed into
 const teamMembers = [];
 const idArray = [];
-
+// Questions 
 function menuApp() {
+//Questions to generate Manager info
   function genManager() {
     inquirer.prompt([
       {
@@ -50,6 +41,7 @@ function menuApp() {
         message: "What is the manager's office number?"
       }
     ])
+    //Generate manager info from inquirer prompts
       .then((answers) => {
         const manager = new Manager(
           answers.managerName,
@@ -62,7 +54,7 @@ function menuApp() {
         createTeam();
       });
   }
-
+  //Menu options for choosing what kind of team member to generate
   function createTeam() {
     inquirer.prompt([
       {
@@ -76,6 +68,7 @@ function menuApp() {
         ],
       },
     ])
+    //Switch statements to determine which set of questions to return 
       .then((userChoice) => {
         switch (userChoice.memberChoice) {
           case 'Engineer':
@@ -89,7 +82,7 @@ function menuApp() {
         }
       });
   }
-
+  //Inquirer prompts for adding Engineer
   function addEngineer() {
     inquirer
       .prompt([
@@ -127,6 +120,7 @@ function menuApp() {
       })
 
   }
+  //Inquirer prompts for adding Intern 
   function addIntern() {
     inquirer
       .prompt([
@@ -163,13 +157,16 @@ function menuApp() {
         createTeam();
       });
   }
+  //File System checks for directory to generate HTML into
   function generateTeam() {
     if (!fs.existsSync('DIST_DIR')) {
       fs.mkdirSync('DIST_DIR')
     }
+    //Render HTML template into actual HTML file
     fs.writeFileSync(distPath, render(teamMembers), 'utf-8');
   }
+  //Generate Manager from info
   genManager();
 }
-
+//Initialize application
 menuApp();

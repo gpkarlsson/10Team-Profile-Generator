@@ -1,4 +1,5 @@
 const generateTeam = team => {
+  // HTML for Manager with template literals
   const generateManager = manager => {
     return `  
     <div class="card employee" style="width: 18rem;">
@@ -16,7 +17,7 @@ const generateTeam = team => {
   </div>
     `;
   }
-
+  // HTML for Engineer with template literals
   const generateEngineer = engineer => {
     return `
     <div class="card employee" style="width: 18rem;">
@@ -34,7 +35,7 @@ const generateTeam = team => {
   </div>
     `;
   }
-
+// HTML for Intern with template literals
   const generateIntern = intern => {
     return `
     <div class="card employee" style="width: 18rem;">
@@ -52,28 +53,31 @@ const generateTeam = team => {
   </div>
     `;
   };
-
+  //Empty array which html will be pushed into
   const html = [];
-
+//Push Manager HTML into html array
   html.push(team
     .filter(employee => employee.returnRole() === 'Manager')
     .map(manager => generateManager(manager))
   );
 
+//Push Engineer HTML into html array
   html.push(team
     .filter(employee => employee.returnRole() === 'Engineer')
     .map(engineer => generateEngineer(engineer))
     .join('')
   );
 
+//Push Intern HTML into html array
   html.push(team
     .filter(employee => employee.returnRole() === 'Intern')
     .map(intern => generateIntern(intern))
     .join('')
   );
+  //join html array data to combine it
     return html.join('')
 }
-
+// boilerplate HTML that 
 module.exports = team => {
 
   return `
