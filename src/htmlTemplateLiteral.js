@@ -40,7 +40,7 @@ const generateTeam = team => {
     return `
     <div class="card employee" style="width: 18rem;">
     <div class="card-body">
-      <h2 class="card-title">Id: ${intern.returnName()}</h2>
+      <h2 class="card-title">${intern.returnName()}</h2>
       <h3 class="card-subtitle mb-2">${intern.returnRole()}</h3>
     </div>
     <div class="card" style="width: 18rem;">
