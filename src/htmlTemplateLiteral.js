@@ -4,11 +4,11 @@ const generateTeam = team => {
     <div class="card employee" style="width: 18rem;">
     <div class="card-body">
       <h2 class="card-title">${manager.returnName()}</h2>
-      <h3 class="card-subtitle mb-2 text-muted">${manager.returnRole()}</h3>
+      <h3 class="card-subtitle mb-2">${manager.returnRole()}</h3>
     </div>
     <div class="card" style="width: 18rem;">
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"> ${manager.returnId()}</li>
+    <li class="list-group-item">ID: ${manager.returnId()}</li>
     <li class="list-group-item">Email: <a href="mailto:${manager.returnEmail()}">${manager.returnEmail()}</a></li>
     <li class="list-group-item">Office Number: ${manager.returnManagerOfficeNum()}</li>
   </ul>
@@ -22,13 +22,13 @@ const generateTeam = team => {
     <div class="card employee" style="width: 18rem;">
     <div class="card-body">
       <h2 class="card-title">${engineer.returnName()}</h2>
-      <h3 class="card-subtitle mb-2 text-muted">${engineer.returnRole()}</h3>
+      <h3 class="card-subtitle mb-2">${engineer.returnRole()}</h3>
     </div>
     <div class="card" style="width: 18rem;">
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">${engineer.returnId()}</li>
+    <li class="list-group-item">ID: ${engineer.returnId()}</li>
     <li class="list-group-item">Email: <a href="mailto:${engineer.returnEmail()}">${engineer.returnEmail()}</a></li>
-    <li class="list-group-item">GitHub: <a href="https//:github.com/${engineer.returnGitHub()}">${engineer.returnGitHub()}</a></li>
+    <li class="list-group-item">GitHub: <a href="https//:github.com/${engineer.returnGitHub()}" target="_blank">${engineer.returnGitHub()}</a></li>
   </ul>
 </div>
   </div>
@@ -39,12 +39,12 @@ const generateTeam = team => {
     return `
     <div class="card employee" style="width: 18rem;">
     <div class="card-body">
-      <h2 class="card-title">${intern.returnName()}</h2>
-      <h3 class="card-subtitle mb-2 text-muted">${intern.returnRole()}</h3>
+      <h2 class="card-title">Id: ${intern.returnName()}</h2>
+      <h3 class="card-subtitle mb-2">${intern.returnRole()}</h3>
     </div>
     <div class="card" style="width: 18rem;">
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">${intern.returnId()}</li>
+    <li class="list-group-item">ID: ${intern.returnId()}</li>
     <li class="list-group-item">Email: <a href="mailto:${intern.returnEmail()}">${intern.returnEmail()}</a></li>
     <li class="list-group-item">School: ${intern.returnSchool()}</li>
   </ul>
@@ -87,7 +87,6 @@ module.exports = team => {
     <title>My Team</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/c502137733.js"></script>
 </head>
 
 <body>

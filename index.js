@@ -110,14 +110,14 @@ function menuApp() {
         },
         {
           type: 'input',
-          name: 'enginnerGithub',
+          name: 'engineerGithub',
           message: "What is the engineer's Github username?"
         }
       ])
       .then((answers) => {
         const engineer = new Engineer(
           answers.engineerName,
-          answers.engneerId,
+          answers.engineerId,
           answers.engineerEmail,
           answers.engineerGithub
         );
